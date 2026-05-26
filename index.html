@@ -1,123 +1,232 @@
-
-
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>comfort under bright lights 🤔😍</title>
-  <style>
-    body {
-      background-color: #000;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: sans-serif;
-    }
-
-    .video-container {
-      position: relative;
-      width: 90%;
-      max-width: 600px;
-    }
-
-    video {
-      width: 100%;
-      border-radius: 10px;
-      display: block;
-    }
-
-    /* Banner iklan di dalam video */
-    .ad-banner {
-      position: absolute;
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.7);
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 14px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      animation: fadeIn 0.5s ease-in;
-    }
-
-    .ad-banner img {
-      height: 30px;
-      border-radius: 4px;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    .close-ad {
-      background: red;
-      border: none;
-      color: #fff;
-      font-size: 12px;
-      padding: 3px 6px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Video Scroll Feed</title>
+    <!-- Menggunakan Lucide Icons untuk ikon tombol -->
+    <script src="https://unpkg.com"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        /* Kontainer Utama Feed */
+        .feed-container {
+            width: 100%;
+            max-width: 420px;
+            height: 100vh;
+            max-height: 850px;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scrollbar-width: none; /* Sembunyikan scrollbar Firefox */
+            background: #111;
+            border-radius: 14px;
+            position: relative;
+        }
+        .feed-container::-webkit-scrollbar {
+            display: none; /* Sembunyikan scrollbar Chrome/Safari */
+        }
+        /* Setiap Item Video */
+        .video-card {
+            width: 100%;
+            height: 100%;
+            scroll-snap-align: start;
+            position: relative;
+            background: #000;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* Overlay Iklan (Diperbaiki: Sesuai ukuran script 300x250) */
+        .ad-overlay {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 250px;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Informasi Judul/Keterangan di Bawah */
+        .video-info {
+            position: absolute;
+            bottom: 30px;
+            left: 15px;
+            right: 80px;
+            z-index: 5;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+        }
+        .video-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        /* Sidebar Tombol Interaksi */
+        .interaction-sidebar {
+            position: absolute;
+            right: 15px;
+            bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 5;
+            align-items: center;
+        }
+        .icon-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.8rem;
+            gap: 5px;
+        }
+        .icon-btn i {
+            width: 28px;
+            height: 28px;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.8));
+        }
+        .icon-btn.active i {
+            color: #ff3b30; /* Warna merah saat di-like */
+        }
+        /* Optimasi Mobile */
+        @media (max-width: 600px) {
+            .feed-container {
+                max-width: 100%;
+                height: 100vh;
+                max-height: 100vh;
+                border-radius: 0;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="video-container">
-    <video id="myVideo" controls>
-      <source src="https://cdn.videy.co/ndRDIOSg1.mp4" type="video/mp4">
-      Browser Anda tidak mendukung pemutar video.
-    </video>
+    <div class="feed-container">
+        
+        <!-- VIDEO 1 -->
+        <div class="video-card">
+            <!-- IKLAN VIDEO 1 -->
+            <div class="ad-overlay">
+                <script>
+                    atOptions = { 'key' : 'dae87a9f0396af430e6356cc8d20e1ce', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+                </script>
+                <script src="https://hypothesisgarden.com/dae87a9f0396af430e6356cc8d20e1ce/invoke.js"></script>
+            </div>
 
-    <div class="ad-banner" id="adBanner">
-<script type="text/javascript">
-	atOptions = {
-		'key' : '4a2fc598ebbbdbc95eb3bef73798c939',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/4a2fc598ebbbdbc95eb3bef73798c939/invoke.js"></script>
+            <video loop muted playsinline controls controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture>
+                <source src="https://cdn2.videy.co/u3HGBslj1.mp4" type="video/mp4">
+            </video>
+
+            <div class="video-info">
+                <div class="video-title">Lol what's the secret to her speed? 🤣🔥</div>
+            </div>
+
+            <div class="interaction-sidebar">
+                <button class="icon-btn" onclick="toggleLike(this)"><i data-lucide="heart"></i><span>12.5K</span></button>
+                <button class="icon-btn"><i data-lucide="message-circle"></i><span>342</span></button>
+                <button class="icon-btn" onclick="shareVideo()"><i data-lucide="share-2"></i><span>Bagikan</span></button>
+            </div>
+        </div>
+
+        <!-- VIDEO 2 (Contoh Duplikasi untuk Fitur Scroll) -->
+        <div class="video-card">
+            <video loop muted playsinline controls controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture>
+                <source src="https://cdn2.videy.co/ndRDIOSg1.mp4" type="video/mp4">
+            </video>
+            <div class="video-info">
+                <div class="video-title">Video Kedua: Tantangan Kecepatan Baru! ⚡</div>
+            </div>
+            <div class="interaction-sidebar">
+                <button class="icon-btn" onclick="toggleLike(this)"><i data-lucide="heart"></i><span>8.2K</span></button>
+                <button class="icon-btn"><i data-lucide="message-circle"></i><span>115</span></button>
+                <button class="icon-btn" onclick="shareVideo()"><i data-lucide="share-2"></i><span>Bagikan</span></button>
+            </div>
+        </div>
+
     </div>
-  </div>
 
-  <script>
-    const video = document.getElementById('myVideo');
-    const adBanner = document.getElementById('adBanner');
+    <script>
+        // Inisialisasi Ikon Lucide
+        lucide.createIcons();
 
-    // Tampilkan iklan 5 detik setelah video mulai diputar
-    video.addEventListener('play', () => {
-      setTimeout(() => {
-        adBanner.style.display = 'flex';
-      }, 1000);
-    });
+        // Fitur Autoplay saat video di-scroll (Mendeteksi video yang aktif di layar)
+        const container = document.querySelector('.feed-container');
+        const videos = document.querySelectorAll('video');
 
-    // Tutup iklan secara manual
-    function closeAd() {
-      adBanner.style.display = 'none';
-    }
+        const observerOptions = {
+            root: container,
+            threshold: 0.6 // Video harus terlihat 60% baru berputar
+        };
 
-    // Opsional: sembunyikan iklan otomatis setelah 10 detik
-    video.addEventListener('play', () => {
-      setTimeout(() => {
-        adBanner.style.display = 'none';
-      }, 1500000000);
-    });
-  </script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target;
+                if (entry.isIntersecting) {
+                    video.play().catch(error => console.log("Autoplay diblokir browser:", error));
+                } else {
+                    video.pause();
+                    video.currentTime = 0; // Reset ke awal jika di-scroll pergi
+                }
+            });
+        }, observerOptions);
 
-    <!-- Histats.com  START  (aync)-->
+        videos.forEach(video => {
+            observer.observe(video);
+            // Proteksi klik kanan download
+            video.addEventListener('contextmenu', e => e.preventDefault());
+        });
+
+        // Logika Tombol Like
+        function toggleLike(btn) {
+            btn.classList.toggle('active');
+            const icon = btn.querySelector('i');
+            if (btn.classList.contains('active')) {
+                icon.setAttribute('data-lucide', 'heart-handshake'); // atau tetap heart tapi ganti warna via CSS
+                btn.style.color = '#ff3b30';
+            } else {
+                btn.style.color = '#fff';
+            }
+        }
+
+        // Logika Tombol Share
+        function shareVideo() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Tonton Video Lucu Ini',
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                alert('Tautan disalin ke papan klip!');
+                navigator.clipboard.writeText(window.location.href);
+            }
+        }
+    </script>
+
+   <!-- Histats.com  START  (aync)-->
 <script type="text/javascript">var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,4573229,4,0,0,0,00010000']);
+_Hasync.push(['Histats.start', '1,5007039,4,0,0,0,00010000']);
 _Hasync.push(['Histats.fasi', '1']);
 _Hasync.push(['Histats.track_hits', '']);
 (function() {
@@ -125,7 +234,8 @@ var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async
 hs.src = ('//s10.histats.com/js15_as.js');
 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
 })();</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4573229&101" alt="" border="0"></a></noscript>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5007039&101" alt="" border="0"></a></noscript>
 <!-- Histats.com  END  -->
+    
 </body>
 </html>
